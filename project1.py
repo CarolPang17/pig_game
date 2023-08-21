@@ -42,16 +42,34 @@ player_scores = [0 for _ in range(players)]
 
 #game will keep going if player's scores is less then maximum score
 while max(player_scores) < max_score:
-    #ask play if he/she want to continue to roll
-    should_roll = input("would you like to toll (y)? ")
-    # if the input is capital, .lower() convert it to lowercase, if lowercase then keep lowercase
-    if should_roll.lower() != "y":
-        #if put not equal to y , means n or something else, then break, this turn will stop
-        break
-    #otherwise if input == "y", it will not "break" the loop, then roll again
-    value = roll()
 
-#ask user if they want to continue to roll, either toll again , or stop their turn
+    #go over each player one by one
+    for player_idx in range(players):
+        #set initial score for this turn
+        current_score = 0
+
+        while True:
+            #ask play if he/she want to continue to roll
+            should_roll = input("would you like to toll (y)? ")
+            # if the input is capital, .lower() convert it to lowercase, if lowercase then keep lowercase
+            if should_roll.lower() != "y":
+                #if put not equal to y , means n or something else, then break, this turn will stop
+                break
+            #otherwise if input == "y", it will not "break" the loop, then roll again
+            value = roll()
+
+            #if the dice number is 1 , player loss all score, trun end
+            if value == 1:
+                print("you should a 1! Turn done!")
+                #trun end
+                break
+            #if player get any number other then 1, player's score in this turn goes up with the dice number
+            else:
+                current_score += value
+                print("you rolled a:", value)
+
+            print("Your score is:", current_score)
+
 #if he/she decides to stop the turn, then add the dice result to the total score
 
 # keep checking if either player has a score that is above 50

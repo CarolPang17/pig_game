@@ -46,6 +46,7 @@ while max(player_scores) < max_score:
     #go over each player one by one
     for player_idx in range(players):
         print("\nPlayer number ", player_idx + 1, " turn has just started\n")
+        print("Your total score is:", player_scores[player_idx], "\n")
         #set initial score for this turn
         current_score = 0
 
@@ -76,3 +77,11 @@ while max(player_scores) < max_score:
         #add the score in this turn to the total score of the player
         player_scores[player_idx] += current_score
         print("your total score is:", player_scores[player_idx])
+
+# re-set the maximum score to the player's highest score
+max_score = max(player_scores)
+
+# print out the winner
+winning_idx = player_scores.index(max_score)
+print("Player number", winning_idx + 1, "is the winner with a score of:",
+      max_score)

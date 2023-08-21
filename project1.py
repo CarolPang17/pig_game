@@ -45,6 +45,7 @@ while max(player_scores) < max_score:
 
     #go over each player one by one
     for player_idx in range(players):
+        print("\nPlayer number ", player_idx + 1, " turn has just started\n")
         #set initial score for this turn
         current_score = 0
 
@@ -58,9 +59,11 @@ while max(player_scores) < max_score:
             #otherwise if input == "y", it will not "break" the loop, then roll again
             value = roll()
 
-            #if the dice number is 1 , player loss all score, trun end
+            #if the dice number is 1 , player loss score of this turn, trun end
             if value == 1:
-                print("you should a 1! Turn done!")
+                print("you rolled a 1! Turn done!")
+                #make this turn score to be 0
+                current_score = 0
                 #trun end
                 break
             #if player get any number other then 1, player's score in this turn goes up with the dice number
@@ -70,7 +73,6 @@ while max(player_scores) < max_score:
 
             print("Your score is:", current_score)
 
-#if he/she decides to stop the turn, then add the dice result to the total score
-
-# keep checking if either player has a score that is above 50
-# if anyone totale score is more than 50, game end
+        #add the score in this turn to the total score of the player
+        player_scores[player_idx] += current_score
+        print("your total score is:", player_scores[player_idx])

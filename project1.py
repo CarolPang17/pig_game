@@ -38,6 +38,19 @@ max_score = 50
 #set all player initial score to 0
 player_scores = [0 for _ in range(players)]
 
+# --- set game's term
+
+#game will keep going if player's scores is less then maximum score
+while max(player_scores) < max_score:
+    #ask play if he/she want to continue to roll
+    should_roll = input("would you like to toll (y)? ")
+    # if the input is capital, .lower() convert it to lowercase, if lowercase then keep lowercase
+    if should_roll.lower() != "y":
+        #if put not equal to y , means n or something else, then break, this turn will stop
+        break
+    #otherwise if input == "y", it will not "break" the loop, then roll again
+    value = roll()
+
 #ask user if they want to continue to roll, either toll again , or stop their turn
 #if he/she decides to stop the turn, then add the dice result to the total score
 
